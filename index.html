@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/"> 
+    <meta charset="UTF-8">
+    <link href="./css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+    <title></title>
+
+    <script type="text/javascript">
+
+        window.onload= function (){
+            var id= 0;
+            const form = document.getElementById('memeForm');
+                form.addEventListener('submit', event => {
+                    id++;
+                    const newDiv = document.createElement("div");
+                    newDiv.className = "container";
+                  
+                    var img = new Image(); 
+                    img.src = document.getElementById("img").value ;
+                    img.setAttribute('id', 'img'+id);
+                    newDiv.appendChild(img);  
+
+
+                    const topTextDiv = document.createElement("div");
+                    topTextDiv.className="top-left";
+                    var topTxt = document.createTextNode(document.getElementById("topTxt").value );   
+                    topTextDiv.appendChild(topTxt)     
+                    newDiv.appendChild(topTextDiv);   
+
+                    var a = document.createElement('a'); 
+                    a.className ='delete';
+                    a.setAttribute('href', '#');
+                    a.setAttribute('id', 'a'+id);
+                    var link = document.createTextNode("Delete"); 
+                    a.appendChild(link);
+                    a.onclick = function(e){
+                                e.preventDefault();
+                                var element = document.getElementById(e.target.id);
+                                element.parentNode.remove();
+                            }   
+                    newDiv.appendChild(a);
+
+                    const bottomTextDiv = document.createElement("div");
+                    bottomTextDiv.className="bottom-left";
+                    var bottomTxt = document.createTextNode(document.getElementById("bottomTxt").value ); 
+                    bottomTextDiv.appendChild(bottomTxt)       
+                    newDiv.appendChild(bottomTextDiv);
+
+                  
+
+
+                    document.getElementById('pageDiv').appendChild(newDiv);
+                    
+                    event.preventDefault();  
+                
+                });
+
+
+
+               
+        }
+  
+       
+    </script>
+
+</head>
+<body>
+    
+<h1> MEME Generator</h1>
+<div class="form">
+<h4> Add your favourite meme's !!</h4>
+   <form name="memeForm" id="memeForm">  
+  
+            <label class="label">Enter the image URL</label>
+            <input type="text" id="img" name="img"></textarea><br><br>
+            <label  class="label">Text on top</label>
+            <input type="text" id="topTxt" name="topTxt"><br/><br>  
+            <label  class="label">Text on bottom:</label>
+            <input type="text" id="bottomTxt" name="bottomTxt"><br/><br>
+            <input type="submit" value="Add Meme" />
+           
+
+    </form> 
+</div>
+    <div id="pageDiv">
+
+    </div>
+</body>
+</html>
