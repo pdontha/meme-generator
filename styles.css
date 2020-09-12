@@ -26,13 +26,18 @@ h1 {
 .form {
 position: absolute;
 top: 50%;
-left: 50%;
 margin-top: -15%;
-margin-left: -25%;
-width: 50%;
-height: 30%;
-padding: 1%;
+width: 100%;
+height: 35%;
 background-color: rgb(149, 172, 149);
+font-family: 'Work-Sans' , sans-serif;
+}
+
+.pageDiv {
+  position: absolute;
+top: 60%;
+left: 5%;
+width: 100%;
 font-family: 'Work-Sans' , sans-serif;
 }
 
