@@ -9,7 +9,7 @@ body {
 
 h4 {
   font-family: 'Work-Sans' , sans-serif;
-  color: rgb(77, 94, 77);
+  color: rgb(40, 61, 40);
 
 }
 
@@ -36,7 +36,7 @@ display: inline-block;
   display: inline-block;
   width: 15%;
   text-align: left;
-  color: rgb(40, 61, 40);
+  color:rgb(40, 61, 40);
 }
 
 .form .text {
