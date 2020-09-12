@@ -12,6 +12,7 @@
             var id= 0;
             const form = document.getElementById('memeForm');
                 form.addEventListener('submit', event => {
+                    if(document.getElementById("img").value.length > 0){
                     id++;
                     const newDiv = document.createElement("div");
                     newDiv.className = "container";
@@ -19,6 +20,7 @@
                     var img = new Image(); 
                     img.src = document.getElementById("img").value ;
                     img.setAttribute('id', 'img'+id);
+                    img.setAttribute('alt', 'INVALID IMAGE');
                     newDiv.appendChild(img);  
 
 
@@ -29,15 +31,18 @@
                     newDiv.appendChild(topTextDiv);   
 
                     var a = document.createElement('a'); 
-                    a.className ='delete';
+                    
                     a.setAttribute('href', '#');
-                    a.setAttribute('id', 'a'+id);
-                    var link = document.createTextNode("Delete"); 
-                    a.appendChild(link);
+                    var img = new Image(); 
+                    img.src = "icons/delete-64.png" ;
+                    img.setAttribute("style","width:40px;height:40px;" );
+                    img.className ='delete';
+                    img.setAttribute('id', 'del'+id);
+                    a.appendChild(img);
                     a.onclick = function(e){
                                 e.preventDefault();
                                 var element = document.getElementById(e.target.id);
-                                element.parentNode.remove();
+                                element.parentNode.parentElement.remove();
                             }   
                     newDiv.appendChild(a);
 
@@ -52,8 +57,13 @@
 
                     document.getElementById('pageDiv').appendChild(newDiv);
                     
-                    event.preventDefault();  
+                    form.reset(); 
+                    }
+                    else {
+                            alert("Please add an image link.");
+                    }
                 
+                    event.preventDefault();  
                 });
 
 
@@ -73,12 +83,12 @@
    <form name="memeForm" id="memeForm">  
   
             <label class="label">Enter the image URL</label>
-            <input type="text" id="img" name="img"></textarea><br><br>
+            <input type="text" id="img" name="img" class="text"></textarea><br><br>
             <label  class="label">Text on top</label>
-            <input type="text" id="topTxt" name="topTxt"><br/><br>  
+            <input type="text" id="topTxt" name="topTxt"  class="text" MaxLength="70"><br/><br>  
             <label  class="label">Text on bottom:</label>
-            <input type="text" id="bottomTxt" name="bottomTxt"><br/><br>
-            <input type="submit" value="Add Meme" />
+            <input type="text" id="bottomTxt" name="bottomTxt"  class="text" MaxLength="70"><br/><br>
+            <input type="submit" value="Add Meme" class="btn" />
            
 
     </form> 
